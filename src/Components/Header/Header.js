@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
@@ -12,7 +12,7 @@ import ForumIcon from "@mui/icons-material/Forum";
 import NotificationsActiveIcon from "@mui/icons-material/NotificationsActive";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useStateValue } from "../../StateProvider";
-import { Menu, MenuBook } from "@material-ui/icons";
+import { Menu } from "@material-ui/icons";
 
 function Header() {
   const [{ user }, dispatch] = useStateValue();
@@ -30,9 +30,6 @@ function Header() {
         <div className="header__input">
           <SearchIcon />
           <input placeholder="Search Facebook" type="text" />
-        </div>
-        <div className="header__hamburger">
-          <Menu />
         </div>
       </div>
       <div className="header__middle">

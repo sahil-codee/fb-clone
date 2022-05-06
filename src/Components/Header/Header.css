@@ -26,10 +26,6 @@
     background-color: transparent;
     outline-width: 0;
 }
-.header__hamburger {
-    display: none;
-}
-
 .header__middle {
     display: flex;
     flex: 1;
@@ -94,12 +90,5 @@
     }
    .header__input > input::-webkit-input-placeholder {
         color: transparent;
-    }   
-    .header__hamburger {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 0 20px;
-    }
-    
+    } 
 }
