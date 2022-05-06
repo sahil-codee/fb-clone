@@ -1,32 +1,38 @@
-import React from 'react'
-import './Feed.css'
-import MessageSender from './MessageSender'
-import Post from './Post'
-import StoryReel from './StoryReel'
-
+import React, { useEffect, useState } from "react";
+import "./Feed.css";
+import MessageSender from "./MessageSender";
+import Post from "./Post";
+import StoryReel from "./StoryReel";
+import { db } from "../../firebase";
 
 function Feed() {
-  return (
-    <div className='feed'> 
-        <StoryReel />
-        <MessageSender />
-        
+  const [posts, setPosts] = useState([]);
 
+  useEffect(() => {
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+      );
+  }, []);
+
+  return (
+    <div className="feed">
+      <StoryReel />
+      <MessageSender />
+
+      {posts.map((post) => (
         <Post
-        profilePic="https://media-exp1.licdn.com/dms/image/C4D03AQFYXBrBuFFBSg/profile-displayphoto-shrink_200_200/0/1641108600347?e=1654732800&v=beta&t=lqGjtU02NN3bsNV73VnM-tMIFgJjBfGHHqjZRYgAMWg"
-        message="Wow! This Work Guyzzzz.........."
-        timestamp="This is a timestamp"
-        username="iamsahilbakshi"
-        image="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/08/learn-coding-online-for-free.png"
+          key={post.id}
+          profilePic={post.data.profilePic}
+          message={post.data.message}
+          timestamp={post.data.timestamp}
+          username={post.data.username}
+          image={post.data.image}
         />
-        <Post
-        profilePic="https://media-exp1.licdn.com/dms/image/C4D03AQFYXBrBuFFBSg/profile-displayphoto-shrink_200_200/0/1641108600347?e=1654732800&v=beta&t=lqGjtU02NN3bsNV73VnM-tMIFgJjBfGHHqjZRYgAMWg"
-        message="Wow! This Work Guyzzzz.........."
-        timestamp="This is a timestamp"
-        username="iamsahilbakshi"
-        />
+      ))}
     </div>
-  )
+  );
 }
 
-export default Feed
+export default Feed;

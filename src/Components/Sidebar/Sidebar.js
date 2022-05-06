@@ -8,12 +8,17 @@ import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import './Sidebar.css'
+import { useStateValue } from '../../StateProvider';
 
 function Sidebar() {
 
+  const [{ user }, dispatch] = useStateValue(); 
+
   return (
     <div className='Sidebar'>
-      <SidebarRow src="https://i.pinimg.com/280x280_RS/b5/69/bb/b569bb833ce6d62756d727ff87b81cb0.jpg" title="Sahil Bakshi" />
+      <SidebarRow 
+      src={user.photoURL}
+       title={user.displayName} />
       <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Inoformation Center" />
       <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
       <SidebarRow Icon={PeopleIcon} title="Friends" />

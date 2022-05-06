@@ -15,8 +15,7 @@ function Widgets() {
         width="240"
         height="100%"
         scrolling="yes"
-        frameborder="0"
-        allowTransparency="true"
+        frameBorder="0"
         allow="encrypted-media"
       ></iframe>
     </div>

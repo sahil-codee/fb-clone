@@ -4,9 +4,12 @@ import Header from "../src/Components/Header/Header";
 import Sidebar from "../src/Components/Sidebar/Sidebar";
 import Widgets from "./Components/Widgets/Widgets";
 import Login from "./Components/Login/Login";
+import { useStateValue } from "./StateProvider";
 
 function App() {
-  const user = null;
+
+  const [{ user } , dispatch] = useStateValue();
+
   return (
     //BEM Naming convention //
 

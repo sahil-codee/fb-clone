@@ -26,6 +26,9 @@
     background-color: transparent;
     outline-width: 0;
 }
+.header__hamburger {
+    display: none;
+}
 
 .header__middle {
     display: flex;
@@ -62,6 +65,10 @@
 .header__option--active {
     border-bottom: 4px solid #2e81f4;
 }
+.header__right {
+    display: flex;
+    align-items: center;
+}
 .header__info {
     display: flex;
     align-items: center;
@@ -72,4 +79,27 @@
 }
 .header__left > img {
     height: 40px;
+}
+
+@media screen and (max-width: 767px) {
+    .header__middle {
+        display: none;
+    }
+    .header__info {
+        display: none;
+    }
+    .header__input {
+        width: 22px;
+        height: 20px;        
+    }
+   .header__input > input::-webkit-input-placeholder {
+        color: transparent;
+    }   
+    .header__hamburger {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+    }
+    
 }
